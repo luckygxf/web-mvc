@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+
+    <display-name>helloapp</display-name>
+
+    <!--上下文传入键值对-->
+    <context-param>
+        <param-name>key</param-name>
+        <param-value>value</param-value>
+    </context-param>
+
+    <!--设置web-app默认主页 -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- filters -->
+    <filter>
+        <filter-name>dispatch-filter</filter-name>
+        <filter-class>com.gxf.filters.DispatcherFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>dispatch-filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- servlets -->
+    <servlet>
+        <servlet-name>hello-servlet</servlet-name>
+        <servlet-class>com.gxf.servlets.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello-servlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
