@@ -2,6 +2,7 @@ package com.gxf.filters;
 
 import com.gxf.annotation.GxfController;
 import com.gxf.annotation.GxfPath;
+import com.gxf.ioc.BeanFactory;
 import com.gxf.utils.OutputUtil;
 import com.gxf.utils.ScanningFile;
 
@@ -19,6 +20,7 @@ import java.util.List;
  **/
 public class DispatcherFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
+        BeanFactory.startIoc();
         System.out.println("do init DispatcherFilter");
     }
 

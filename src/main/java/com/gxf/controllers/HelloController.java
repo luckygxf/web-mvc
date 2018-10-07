@@ -1,7 +1,9 @@
 package com.gxf.controllers;
 
+import com.gxf.annotation.GxfAutoWired;
 import com.gxf.annotation.GxfController;
 import com.gxf.annotation.GxfPath;
+import com.gxf.service.StudentService;
 import com.gxf.utils.OutputUtil;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,9 @@ import java.io.IOException;
 @GxfController(path = "/hello")
 public class HelloController {
 
+    @GxfAutoWired(beanName = "studentService")
+    private static StudentService studentService;
+
     @GxfPath(path = "/print")
     public void outputHello(HttpServletRequest req, HttpServletResponse resp){
         try {
@@ -31,7 +36,7 @@ public class HelloController {
     @GxfPath(path = "/sing")
     public void sing(HttpServletRequest req, HttpServletResponse resp){
         try {
-            OutputUtil.outputHmtlContent(req, resp, "mvc framework", "Sing");
+            OutputUtil.outputHmtlContent(req, resp, "mvc framework", studentService.sing());
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -42,11 +47,13 @@ public class HelloController {
     @GxfPath(path = "/laugh")
     public void laugh(HttpServletRequest req, HttpServletResponse resp){
         try {
-            OutputUtil.outputHmtlContent(req, resp, "mvc framework", "Laugh");
+            OutputUtil.outputHmtlContent(req, resp, "mvc framework", studentService.laugh());
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }
