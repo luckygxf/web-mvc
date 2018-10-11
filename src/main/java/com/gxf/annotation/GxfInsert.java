@@ -8,11 +8,10 @@ import java.lang.annotation.Target;
 /**
  * @Author:
  * @Description:
- * @Date: Created in : 2018/10/7 下午4:53
+ * @Date: Created in : 2018/10/10 下午12:04
  **/
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface GxfService {
-
-    String beanName();
+public @interface GxfInsert {
+    String[] value();
 }

@@ -1,5 +1,6 @@
 package com.gxf.dao;
 
+import com.gxf.annotation.GxfSelect;
 import com.gxf.entity.Student;
 
 /**
@@ -9,5 +10,8 @@ import com.gxf.entity.Student;
  **/
 public interface StudentDao {
 
-    public void save(Student student);
+    void save(Student student);
+
+    @GxfSelect("select * from student where name = #{name}")
+    Student getByName(String name);
 }
